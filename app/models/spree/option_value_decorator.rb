@@ -1,9 +1,9 @@
 Spree::OptionValue.class_eval do
 
   has_attached_file :image,
-    :default_style => SpreeVariantOptions::VariantConfig[:option_value_default_style],
-    :url           => SpreeVariantOptions::VariantConfig[:option_value_url],
-    :path          => SpreeVariantOptions::VariantConfig[:option_value_path]
+    :styles => {:small => "40x40#", :large => "100x100#"},
+    :path          => '/option_values/:id/:style/:basename.:extension',
+    :url           => ':path'
     
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
